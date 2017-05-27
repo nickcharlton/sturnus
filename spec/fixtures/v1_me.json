@@ -1,0 +1,1 @@
+{"customerUid":"18c0cf35-6d7d-4b80-9ee7-10baaea6021a","authenticated":true,"expiresInSeconds":0,"scopes":["account:read","balance:read","address:read","address:edit","card:read","customer:read","mandate:read","mandate:delete","payee:create","payee:read","transaction:read","transaction:edit"]}

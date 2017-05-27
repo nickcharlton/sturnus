@@ -1,0 +1,7 @@
+{
+  "access_token": "bW3kAkyNWCYUvNG6QFBLoiZc1YbGGblvLFW9FYvNzMF0FAidxNoPZP5gsN1T3NiS",
+  "refresh_token": "Km9frBk55jnZdY9RZktUfyFPTDi8JUWwdPdDwG68yjWYe2c8RVuTtrtjJ46eTl5M",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "balance:read payee:read transaction:read"
+}
