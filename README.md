@@ -75,6 +75,31 @@ You won't need to set `environment`, `client_id`, `client_secret` or
 [personal access token]: https://developer.starlingbank.com/token/new
 [personal access tokens]: https://developer.starlingbank.com/token/new
 
+### Working with Resources
+
+The `client` is now configured to allow you to fetch different resources:
+
+```ruby
+client.get("/api/v1/me")
+# => {"customerUid":"18c0cf35...","authenticated":true,"expiresInSeconds":0...}
+```
+
+But it's nicer to work with objects and not JSON so you can fetch resources
+directly and it'll build an object from the response:
+
+```ruby
+customer = Sturnus::Customer.get
+customer.uid #=> 18c0cf35...
+customer.first_name #=> Dirk
+# etc
+```
+
+This is done by using [representable][]. As a general rule, duplication of
+names is lost (`customerUid` becomes `uid`) and `snake_case` is preferred over
+`CamelCase` (`firstName` becomes `first_name`).
+
+[representable]: http://trailblazer.to/gems/representable
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then,
