@@ -1,5 +1,12 @@
 require "bundler/setup"
+require "webmock/rspec"
 require "sturnus"
+
+def fixture(file_name)
+  file = File.expand_path("../../spec/fixtures/#{file_name}", __FILE__)
+
+  File.read(file)
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

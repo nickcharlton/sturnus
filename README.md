@@ -23,7 +23,57 @@ Or install it yourself as:
 
 ## Usage
 
-TODO.
+Starling uses [OAuth2][] for authentication. There's two endpoints (production
+and a sandbox) using the full flow and [personal access tokens][] which allow
+you to create tokens for your own account, bypassing the redirects.
+
+### Standard OAuth2
+
+After creating an application (in either sandbox or production), set the
+`client_id`, `client_secret`, and `redirect_uri`. Optionally, set
+`environment` (which defaults to `:production`.)
+
+```ruby
+Sturnus.configure do |config|
+  config.environment = :sandbox #=> :production
+  config.client_id = ""
+  config.client_secret = ""
+  config.redirect_uri = ""
+end
+```
+
+`Starnus::Client` wraps the [`oauth2` gem][gem] and provides a few methods to
+help:
+
+```ruby
+client = Starnus.client
+client.authorize_url # to redirect to
+client.exchange_token(code) # from the post you got back
+```
+
+You can pull the configured client object out from `Starnus.client`, then
+generate the URL to redirect which the user will be redirected to (using
+`authorize_url`), followed by getting an access token using the code which came
+back (`exchange_token`). The token will be used from this point onwards.
+
+### Personal Access Tokens
+
+After creating a [personal access token][], pass this into the `configure`
+block directly:
+
+```ruby
+Sturnus.configure do |config|
+  config.access_token = "YOUR_TOKEN"
+end
+```
+
+You won't need to set `environment`, `client_id`, `client_secret` or
+`redirect_uri`.
+
+[OAuth2]: https://tools.ietf.org/html/rfc6749
+[gem]: https://github.com/intridea/oauth2
+[personal access token]: https://developer.starlingbank.com/token/new
+[personal access tokens]: https://developer.starlingbank.com/token/new
 
 ## Development
 
