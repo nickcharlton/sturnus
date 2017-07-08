@@ -12,6 +12,8 @@ require "sturnus/representers/base"
 
 require "sturnus/representers/customer"
 require "sturnus/customer"
+require "sturnus/representers/account"
+require "sturnus/account"
 
 module Sturnus
   attr_accessor :client
@@ -22,6 +24,7 @@ module Sturnus
 
   def self.models
     {
+      "accounts" => Account,
       "customers" => Customer,
     }
   end

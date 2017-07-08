@@ -115,6 +115,13 @@ When the original resource is parsed, each of the links becomes a `Hyperlink`
 object which can determine the correct resource (through the URL) through a
 lookup table (`Sturnus.models`).
 
+## Resources
+
+These exist as top-level resources (and with the links between them):
+
+* [Customer](lib/sturnus/customer.rb)
+* [Account](lib/sturnus/account.rb)
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then,

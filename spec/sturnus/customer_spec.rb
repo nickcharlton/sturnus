@@ -37,6 +37,23 @@ RSpec.describe Sturnus::Customer do
         last_name: "Gently",
       )
     end
+
+    it "links to accounts" do
+      stub_request(:get, url("/api/v1/customers")).
+        to_return(body: fixture("v1_customers.json"), status: 200)
+      stub_request(:get, url("/api/v1/accounts")).
+        to_return(body: fixture("v1_accounts.json"), status: 200)
+
+      customer = described_class.get
+      account = customer._links["accounts"].get
+
+      expect(account).to have_attributes(
+        id: "0469acc8-572a-467e-877b-306b71e1d16b",
+        name: "18c0cf35-6d7d-4b80-9ee7-10baaea6021a GBP",
+        number: "12345678",
+        sort_code: "123456",
+      )
+    end
   end
 
   def url(segment)
