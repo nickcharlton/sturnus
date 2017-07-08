@@ -1,5 +1,5 @@
 module Sturnus
-  class Customer
+  class Customer < Resource
     URL = "/api/v1/customers".freeze
 
     attr_accessor :uid, :first_name, :last_name, :date_of_birth, :email, :phone

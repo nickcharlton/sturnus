@@ -1,9 +1,6 @@
 module Sturnus
   module Representers
-    class Customer < Representable::Decorator
-      include Representable::JSON
-      include Representable::Coercion
-
+    class Customer < Base
       property :uid, as: :customerUid
       property :first_name, as: :firstName
       property :last_name, as: :lastName

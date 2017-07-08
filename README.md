@@ -100,6 +100,21 @@ names is lost (`customerUid` becomes `uid`) and `snake_case` is preferred over
 
 [representable]: http://trailblazer.to/gems/representable
 
+### Following Links
+
+Each of the resource objects support the `_links` attribute in the response and
+can follow them (including unpacking into the correct `Sturnus::Resource`
+subclass. For example:
+
+```ruby
+customer = Sturnus::Customer.get
+customer._links["self"].get #=> #<Sturnus::Customer:0x007f8326a93cf0 @_links=..
+```
+
+When the original resource is parsed, each of the links becomes a `Hyperlink`
+object which can determine the correct resource (through the URL) through a
+lookup table (`Sturnus.models`).
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then,
