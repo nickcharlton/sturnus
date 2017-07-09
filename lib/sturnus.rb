@@ -6,6 +6,9 @@ require "sturnus/version"
 require "sturnus/errors"
 require "sturnus/configuration"
 require "sturnus/client"
+require "sturnus/hyperlink"
+require "sturnus/resource"
+require "sturnus/representers/base"
 
 require "sturnus/representers/customer"
 require "sturnus/customer"
@@ -15,5 +18,11 @@ module Sturnus
 
   def self.client
     @client ||= Client.new(configuration)
+  end
+
+  def self.models
+    {
+      "customers" => Customer,
+    }
   end
 end
