@@ -10,7 +10,7 @@ RSpec.describe Sturnus::Account do
 
   describe ".get" do
     it "fetches the current account" do
-      stub_request(:get, url("/api/v1/accounts")).
+      stub_request(:get, build_url("/api/v1/accounts")).
         to_return(body: fixture("v1_accounts.json"), status: 200)
 
       account = described_class.get
@@ -29,7 +29,7 @@ RSpec.describe Sturnus::Account do
 
     it "links to self" do
       pending "the Starling API doesn't specify a self link on /v1/accounts"
-      stub_request(:get, url("/api/v1/accounts")).
+      stub_request(:get, build_url("/api/v1/accounts")).
         to_return(body: fixture("v1_accounts.json"), status: 200)
 
       account = described_class.get
@@ -41,11 +41,5 @@ RSpec.describe Sturnus::Account do
         sort_code: "123456",
       )
     end
-  end
-
-  def url(segment)
-    config = Sturnus.configuration
-
-    "#{config.endpoint}#{segment}"
   end
 end

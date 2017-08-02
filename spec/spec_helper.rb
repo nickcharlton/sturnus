@@ -8,6 +8,12 @@ def fixture(file_name)
   File.read(file)
 end
 
+def build_url(segment)
+  config = Sturnus.configuration
+
+  "#{config.endpoint}#{segment}"
+end
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
