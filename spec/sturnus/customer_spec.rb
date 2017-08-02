@@ -10,7 +10,7 @@ RSpec.describe Sturnus::Customer do
 
   describe ".get" do
     it "fetches the current customer" do
-      stub_request(:get, url("/api/v1/customers")).
+      stub_request(:get, build_url("/api/v1/customers")).
         to_return(body: fixture("v1_customers.json"), status: 200)
 
       customer = described_class.get
@@ -26,7 +26,7 @@ RSpec.describe Sturnus::Customer do
     end
 
     it "links to self" do
-      stub_request(:get, url("/api/v1/customers")).
+      stub_request(:get, build_url("/api/v1/customers")).
         to_return(body: fixture("v1_customers.json"), status: 200)
 
       customer = described_class.get
@@ -39,9 +39,9 @@ RSpec.describe Sturnus::Customer do
     end
 
     it "links to accounts" do
-      stub_request(:get, url("/api/v1/customers")).
+      stub_request(:get, build_url("/api/v1/customers")).
         to_return(body: fixture("v1_customers.json"), status: 200)
-      stub_request(:get, url("/api/v1/accounts")).
+      stub_request(:get, build_url("/api/v1/accounts")).
         to_return(body: fixture("v1_accounts.json"), status: 200)
 
       customer = described_class.get
@@ -54,11 +54,5 @@ RSpec.describe Sturnus::Customer do
         sort_code: "123456",
       )
     end
-  end
-
-  def url(segment)
-    config = Sturnus.configuration
-
-    "#{config.endpoint}#{segment}"
   end
 end
